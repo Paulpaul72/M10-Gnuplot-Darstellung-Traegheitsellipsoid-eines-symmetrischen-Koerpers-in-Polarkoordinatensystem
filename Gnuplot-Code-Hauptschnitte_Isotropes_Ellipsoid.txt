@@ -1,0 +1,32 @@
+datafile = 'Dateipfad der Textdatei, in welcher die Messdaten stehen'
+set size square
+set term pdfcairo {size 5, 3.4}
+tw(t) = atan2(a*cos(t-phi),b*sin(t-phi))
+r(t) = sqrt( (a*cos(tw(t)))**2 + (b*sin(tw(t)))**2 )
+set tics font ",10"
+set polar
+set angles degrees
+set grid polar
+unset xtics
+unset ytics
+
+unset border
+set key font ",12"
+set key tmargin
+set label "D1" at (27*cos(0)), (27*sin(0)) font ",12" center
+set label "12" at (27*cos(30)), (27*sin(30))font ",12" center
+set label "11" at (27*cos(60)), (27*sin(60))font ",12" center
+set label "9" at (27*cos(90)), (27*sin(90))font ",12" center
+set label "8" at (27*cos(120)), (27*sin(120))font ",12" center
+set label "7" at (27*cos(150)), (27*sin(150))font ",12" center
+set label "6" at (27*cos(180)), (27*sin(180))font ",12" center
+set label "5" at (27*cos(210)), (27*sin(210))font ",12" center
+set label "4" at (27*cos(240)), (27*sin(240))font ",12" center
+set label "3" at (27*cos(270)), (27*sin(270))font ",12" center
+set label "2" at (27*cos(300)), (27*sin(270))font ",12" center
+set label "1" at (26.8*cos(330)), (26.8*sin(270))font ",12" center
+fit r(t) datafile using 1:2 via a,b,phi
+set output "Isotropes Trägheitsellipsoid1.pdf "
+set rrange[0:25]
+plot datafile using 1:2 title "Messwerte" ls 7 lw 4, r(t) title "Fit" ls 7 lw 3
+set output "Isotropes Trägheitsellipsoid2.pdf "
