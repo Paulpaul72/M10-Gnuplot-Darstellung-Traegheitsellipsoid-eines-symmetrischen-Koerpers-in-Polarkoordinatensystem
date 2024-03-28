@@ -22,9 +22,9 @@ set label "7" at (27*cos(150)), (27*sin(150))font ",12" center
 set label "6" at (27*cos(180)), (27*sin(180))font ",12" center
 set label "5" at (27*cos(210)), (27*sin(210))font ",12" center
 set label "4" at (27*cos(240)), (27*sin(240))font ",12" center
-set label "3" at (27*cos(270)), (27*sin(270))font ",12" center
+set label "3" at (26.6*cos(270)), (26.6*sin(270))font ",12" center
 set label "2" at (27*cos(300)), (27*sin(300))font ",12" center
-set label "1" at (26.8*cos(330)), (26.8*sin(330))font ",12" center
+set label "1" at (27*cos(330)), (27*sin(330))font ",12" center
 fit r(t) datafile using 1:2 via a,b,phi
 set output "Isotropes Trägheitsellipsoid1.pdf "
 set rrange[0:25]
